@@ -12,6 +12,14 @@ The project explores how accessible, locally run AI can encourage people to take
 
 This is an early open-source prototype built to learn, experiment, and improve through collaboration. Participation in the challenge does not imply endorsement by the Hacktoberfest organizers.
 
+## 🌐 Live Demo
+
+**Try TouchGrass:** https://touchgrass-k9y7.onrender.com/
+
+The hosted demo runs with built-in fallback quests, so you can explore the experience without installing an AI model. The locally run version can generate personalized quests using Qwen2.5 0.5B through Ollama.
+
+The hosted demo does not currently run AI inference on Render. To try local AI generation, follow the setup instructions below.
+
 ## ✨ Features
 
 - Personalized quests based on available time, activity, difficulty, and company
