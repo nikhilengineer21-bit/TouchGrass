@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5e9">
+  <meta name="description" content="Get a quest. Put the phone away. Explore the real world.">
+  <title>TouchGrass — AI Outdoor Quest</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="TouchGrass home">
+      <span class="brand-icon">✳</span>
+      <span>touchgrass<span class="brand-dot">.</span></span>
+    </a>
+    <span class="status"><span class="status-dot"></span> YOUR NEXT ADVENTURE AWAITS</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">A LITTLE LESS SCROLLING, A LITTLE MORE LIVING</p>
+      <h1>The world is<br>your <span>playground.</span></h1>
+      <p class="hero-copy">
+        A little adventure goes a long way. Tell us what your day looks like,
+        and we'll find you a reason to step outside.
+      </p>
+    </section>
+
+    <section class="quest-card" aria-labelledby="form-title">
+      <div class="card-heading">
+        <div>
+          <p class="eyebrow">YOUR PERSONAL ADVENTURE</p>
+          <h2 id="form-title">Make some fresh-air plans.</h2>
+        </div>
+        <span class="sun-icon" aria-hidden="true">☀</span>
+      </div>
+
+      <form id="quest-form">
+        <fieldset class="field-group">
+          <legend>01 / How much time have you got?</legend>
+          <div class="choice-grid time-options">
+            <label class="choice">
+              <input type="radio" name="time" value="10" checked>
+              <span><strong>10 min</strong><small>A quick reset</small></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="time" value="20">
+              <span><strong>20 min</strong><small>Take a breather</small></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="time" value="30">
+              <span><strong>30 min</strong><small>Go explore</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend>02 / What sounds good?</legend>
+          <div class="choice-grid activity-options">
+            <label class="choice">
+              <input type="radio" name="activity" value="walking" checked>
+              <span><b>🚶</b><strong>Walking</strong></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="activity" value="nature">
+              <span><b>🌿</b><strong>Nature</strong></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="activity" value="photography">
+              <span><b>📸</b><strong>Photography</strong></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="activity" value="relaxation">
+              <span><b>☁️</b><strong>Unwind</strong></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="two-columns">
+          <fieldset class="field-group">
+            <legend>03 / Your pace</legend>
+            <select id="difficulty" name="difficulty">
+              <option value="easy">Easy & breezy</option>
+              <option value="moderate">A little challenge</option>
+            </select>
+          </fieldset>
+
+          <fieldset class="field-group">
+            <legend>04 / Who's coming?</legend>
+            <select id="company" name="company">
+              <option value="alone">Just me</option>
+              <option value="friends">Friends along</option>
+            </select>
+          </fieldset>
+        </div>
+
+        <button class="generate-button" type="submit">
+          <span>Find my outdoor quest</span><span aria-hidden="true">↗</span>
+        </button>
+        <p class="privacy-note">No GPS. No tracking. Just you and the outdoors.</p>
+      </form>
+    </section>
+
+    <section id="quest-result" class="quest-result" aria-live="polite" hidden>
+      <div class="result-topline">
+        <span class="result-label">YOUR OUTDOOR QUEST</span>
+        <span class="result-time" id="result-time"></span>
+      </div>
+      <h2 id="result-title"></h2>
+      <p id="result-description"></p>
+      <ol id="result-steps"></ol>
+      <div class="safety-note">
+        <strong>🌿 A little reminder</strong>
+        <p>Choose a familiar, safe public place. Stay aware of traffic and your surroundings, and respect nature.</p>
+      </div>
+      <button id="complete-button" class="generate-button" type="button">
+        I did it — quest complete! ✓
+      </button>
+      <p id="completion-message" class="completion-message" hidden>
+        You showed up for the real world today. Nicely done! 🌱
+      </p>
+      <button id="new-quest-button" class="text-button" type="button">
+        Try another quest ↻
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    <span>MADE FOR THE WORLD BEYOND YOUR SCREEN</span>
+    <span>TOUCHGRASS © 2026</span>
+  </footer>
+</body>
+</html>
