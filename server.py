@@ -6,8 +6,12 @@ import urllib.request
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 
-HOST = "127.0.0.1"
-PORT = 8000
+HOST = "0.0.0.0"
+PORT = int(__import__("os").environ.get("PORT", "8000"))
+ENABLE_OLLAMA = (
+    __import__("os").environ.get("ENABLE_OLLAMA", "true").lower()
+    == "true"
+)
 OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
 MODEL = "qwen2.5:0.5b"
 
@@ -242,18 +246,24 @@ class TouchGrassHandler(SimpleHTTPRequestHandler):
                 f"[TouchGrass] Generating quest: {preferences}"
             )
 
-            try:
-                quest = generate_with_ollama(preferences)
-            except (
-                urllib.error.URLError,
-                TimeoutError,
-                json.JSONDecodeError,
-                KeyError,
-                TypeError,
-                ValueError,
-            ) as error:
-                print(f"[DEBUG] Ollama request failed: {error}")
+            
+            if ENABLE_OLLAMA:
+                try:
+                    quest = generate_with_ollama(preferences)
+                except (
+                    urllib.error.URLError,
+                    TimeoutError,
+                    json.JSONDecodeError,
+                    KeyError,
+                    TypeError,
+                    ValueError,
+                ) as error:
+                    print(f"[DEBUG] Ollama request failed: {error}")
+                    quest = None
+            else:
                 quest = None
+                print("[TouchGrass] Ollama disabled; using fallback quests.")
+
 
             if quest is None:
                 quest = FALLBACK_QUESTS[activity].copy()
